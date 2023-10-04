@@ -8,14 +8,14 @@ function EditItem(props) {
   const [isOpen, setIsOpen] = useState(false);
   var all = 0;
 
- // $("#b2").hide();
   const handleClick = (value) => {
       setIsOpen((isOpen) => !isOpen);
       var editableText = $("<textarea />").val("DESCRIPTION...");
+      editableText.css('background-color' , 'rgb(87 83 78)');
       $("#" + value).replaceWith(editableText);
       $("#" + value ).on( "click", function() {
-        alert( "Handler for `click` called." +editableText.val());
         editableText.hide();
+        alert( "Handler for `click` called." +editableText.val());
         window.location.href=process.env.uriEdit
         
       });
