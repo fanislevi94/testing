@@ -7,24 +7,24 @@ function EditItem(props) {
 
   const [isOpen, setIsOpen] = useState(false);
   var all = 0;
+
+ // $("#b2").hide();
   const handleClick = (value) => {
-    console.log("click value" + value);
-    // setIsOpen((isOpen) => !isOpen);
-    if (!isOpen) {
-      all = 1;
       setIsOpen((isOpen) => !isOpen);
       var editableText = $("<textarea />").val("DESCRIPTION...");
       $("#" + value).replaceWith(editableText);
-    } else {
-      alert("saved");
-      window.location.href = process.env.uriEdit;
-    }
+      $("#" + value ).on( "click", function() {
+        alert( "Handler for `click` called." +editableText.val());
+        editableText.hide();
+        window.location.href=process.env.uriEdit
+        
+      });
+
+    
+     
   };
 
-  const handleClickSec = (value) => {
-    var editableText = $("<textarea />").val("DESCRIPTION...");
-    $("#" + value).replaceWith(editableText);
-  };
+  
   return (
     <ul>
       <div className="flex flex-wrap gap-10 pl-40 pt-10">
@@ -54,6 +54,8 @@ function EditItem(props) {
                 EDIT/SAVE
               </button>
             </div>
+
+           
           </div>
         ))}
       </div>
