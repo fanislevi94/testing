@@ -2,10 +2,5 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/main": "pages/main.js",
-  "/": "pages/index.js",
-  "/api/get": "pages/api/get.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/contact": "pages/contact.js",
-  "/index": "pages/index/index.js"
+  "/": "pages/index.js"
 }
