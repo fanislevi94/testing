@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    customKey: "http://localhost:3001/api/get",
-    uriEdit: "http://localhost:3001/edit",
+    customKey: "http://localhost:3000/api/get",
+    uriEdit: "http://localhost:3000/edit",
   },
 };
 
