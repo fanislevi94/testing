@@ -2,10 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/post": "pages/post.js",
-  "/api/auth/[...nextauth]": "pages/api/auth/[...nextauth].js",
-  "/": "pages/index.js",
-  "/signin": "pages/signin.js",
-  "/contact": "pages/contact.js",
-  "/api/get": "pages/api/get.js"
+  "/post": "pages/post.js"
 }
