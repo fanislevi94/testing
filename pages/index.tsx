@@ -1,26 +1,61 @@
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { SessionProvider } from 'next-auth/react';
-import GoogleButton from 'react-google-button'
-import { useRouter } from 'next/navigation';
-export default function IndexPage() {
-  const { data, status } = useSession();
-  const { push } = useRouter();
-  if (status === 'loading') return <h1> loading... please wait</h1>;
-  if (status === 'authenticated') {
-    //window.location.href="/main"
-    
-    push('/main');
-    /*return (
-      <div >
-        <h1> hi {data.user.name}</h1>
-        <img src={data.user.image} alt={data.user.name + ' photo'} />
-        <button onClick={signOut}>sign out</button>
-      </div>
-    );*/
-  }
+import Image from "next/image";
+import api from "./services/api";
+import Link from "next/link";
+import IndexItem from "../component/layout/index";
+
+export default function Home(props: any) {
+  const { allDatas } = props;
+
   return (
-    <div className='w-1/6 mx-auto py-56'>
-      <GoogleButton onClick={() => signIn('google')}/>
+    <div>
+      <div className="w-1/6 mx-auto text-center  pt-10 ">
+        <Image
+          src="/fanis.jpg"
+          width={900}
+          height={900}
+          alt="Picture of the author"
+          className="image"
+        />
+      </div>
+      <div className="text-5xl text-center ">Hi, I'm Fanis</div>
+      <div className="text-1xl text-center pb-5">
+        Hi, I'm a passionate web developer and here is my blog
+      </div>
+      <div className="bg-stone-500">
+        <div className="text-5xl text-center pt-10 text-white">My projects</div>
+        <IndexItem items={allDatas} />
+
+        {/*<ul>
+          <div className="flex flex-wrap gap-10 pl-40 pt-10">
+            {allDatas.map((data: any) => (
+              <div className="text-center" key={data.id}>
+                <Image
+                  src={data.imageUrl}
+                  width={400}
+                  height={600}
+                  alt="Picture of the author"
+                />
+                <li key={data.id}>
+                  <Link href={"get/" + data.title}>
+                    <div className="pt-10 text-4xl text-white">
+                      {data.title}
+                    </div>
+                  </Link>
+                </li>
+
+                <div className="text-white word">{data.description}</div>
+              </div>
+            ))}
+          </div>
+            </ul>*/}
+      </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const data = await api.get(process.env.customKey);
+  return {
+    props: { allDatas: data.projects },
+  };
 }
