@@ -12,7 +12,7 @@ export default async function handler(
   console.log("date " + req.body.date);
   console.log("description " + req.body.description);
   if (req.method == "POST") {
-    const user = await prisma.Projects.create({
+    const user = await prisma.projects.create({
       data: {
         imageUrl: req.body.imageUrl,
         title: req.body.title,

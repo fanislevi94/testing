@@ -9,7 +9,13 @@ export default async function handler(
 ) {
   if (req.method == "GET") {
     console.log("var is" + req.query.value);
-    const projects = await prisma.projects.findMany({});
+    const projects = await prisma.projects.findMany({
+      orderBy: [
+        {
+          id: "desc",
+        },
+      ],
+    });
     res.status(200).json({ projects: projects });
   }
 }

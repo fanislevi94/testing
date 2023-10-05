@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import $ from "jquery";
 import { useState } from "react";
+import api from "../../pages/services/api";
 function EditItem(props) {
   const { items } = props;
 
@@ -15,7 +16,16 @@ function EditItem(props) {
     $("#" + value).replaceWith(editableText);
     $("#" + value).on("click", function () {
       editableText.hide();
-      alert("Handler for `click` called." + editableText.val());
+      //alert("Handler for `click` called." + editableText.val());
+
+      api.put(
+        {
+          id: value,
+          description: editableText.val(),
+        },
+        "api/put"
+      );
+
       window.location.href = process.env.uriEdit;
     });
   };
@@ -32,9 +42,7 @@ function EditItem(props) {
               alt="Picture of the author"
             />
             <li key={data.id}>
-              <Link href={"get/" + data.title}>
-                <div className="pt-10 text-4xl text-white">{data.title}</div>
-              </Link>
+              <div className="pt-10 text-4xl text-white">{data.title}</div>
             </li>
             {console.log("data.id======>" + data.id)}
             <div className="text-white word " id={data.id}>

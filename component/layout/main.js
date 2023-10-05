@@ -1,7 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useSession, signIn, signOut } from "next-auth/react";
 function IndexItem(props) {
   const { items } = props;
+  const { data, status } = useSession();
+  console.log("Hiiii" + data.user.name);
 
   return (
     <ul>

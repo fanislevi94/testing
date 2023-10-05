@@ -15,9 +15,7 @@ function IndexItem(props) {
               alt="Picture of the author"
             />
             <li key={data.id}>
-              <Link href={"get/" + data.title}>
-                <div className="pt-10 text-4xl text-white">{data.title}</div>
-              </Link>
+              <div className="pt-10 text-4xl text-white">{data.title}</div>
             </li>
 
             <div className="text-white word">{data.description}</div>

@@ -23,6 +23,7 @@ export default function Home(props: any) {
       </div>
       <div className="bg-stone-500">
         <div className="text-5xl text-center pt-10 text-white">My projects</div>
+
         <EditItem items={allDatas} />
 
         {/*<ul>
